@@ -1,0 +1,12 @@
+# Folders #
+#################################
+Library
+Logs
+Packages
+ProjectSettings
+Temp
+UserSettings
+PersonalFiles
+# Files #
+#################################
+.vsconfig
