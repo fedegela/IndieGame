@@ -17,29 +17,25 @@ public class Dash : MonoBehaviour
     {
         playerMovement = GetComponent<player_Movement>();
         animator = GetComponent<Animator>();
-        
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown("Dash") && cooldown == 0)
         {
             buttonPressed = true;
-        }
-        if (Input.GetButtonUp("Dash"))
-        {
-            buttonPressed = false;
         }
     }
 
     void FixedUpdate()
     {
-        if (buttonPressed && cooldown == 0)
+        if (buttonPressed)
         {
-            playerMovement.setDashSpeed(dashSpeed);
             animator.SetTrigger("Dash");
+            playerMovement.setDashSpeed(dashSpeed);
             cooldown = cooldownTime;
             dashing = timeOfDash;
+            buttonPressed = false;
         }
 
         if (cooldown > 0)
