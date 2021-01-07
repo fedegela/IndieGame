@@ -5,16 +5,19 @@ using UnityEngine;
 public class player_Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     private float dashSpeed = 1;
     Vector2 movement;
-    public Animator animator;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -22,15 +25,13 @@ public class player_Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
         rb.velocity = movement.normalized * moveSpeed * dashSpeed * Time.fixedDeltaTime;
     }
 
-    public void modifyVelocity(float quantity)
+    public void setDashSpeed(float dashSpeed)
     {
-        dashSpeed = quantity;
-        if (quantity > 1)
-        {
-            animator.SetTrigger("Dash");
-        }
+        this.dashSpeed = dashSpeed;
     }
 }
