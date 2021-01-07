@@ -13,7 +13,6 @@ public class Dash : MonoBehaviour
     private float cooldown = 0;
     public float cooldownTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerMovement = GetComponent<player_Movement>();
@@ -31,14 +30,12 @@ public class Dash : MonoBehaviour
         {
             buttonPressed = false;
         }
-        //buttonPressed = Input.GetButtonDown("Dash");
     }
 
     void FixedUpdate()
     {
         if (buttonPressed && cooldown == 0)
         {
-            
             playerMovement.setDashSpeed(dashSpeed);
             animator.SetTrigger("Dash");
             cooldown = cooldownTime;
