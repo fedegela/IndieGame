@@ -8,12 +8,18 @@ public class player_Movement : MonoBehaviour
     public Rigidbody2D rb;
     private float dashSpeed = 1;
     Vector2 movement;
+    public Vector2 lastDirection;
     public Animator animator;
 
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if(!(movement.Equals(lastDirection)) && !(movement.x == 0 && movement.y == 0) )
+        {
+            lastDirection = movement;
+        }
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
