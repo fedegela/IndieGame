@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 356408054}
   - component: {fileID: 356408056}
   - component: {fileID: 356408055}
+  - component: {fileID: 356408057}
   m_Layer: 6
   m_Name: normal_Enemy_Idle_0
   m_TagString: Untagged
@@ -247,7 +248,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &356408056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -274,6 +275,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93251467, y: 0.54123676}
   m_EdgeRadius: 0
+--- !u!114 &356408057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356408051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81db6f9c05537c46b0d157f8efde86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &528194137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 250
   rb: {fileID: 745158030}
+  lastDirection: {x: 0, y: 0}
   animator: {fileID: 745158026}
 --- !u!114 &745158028
 MonoBehaviour:
@@ -390,12 +405,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fa1557249580148b410feb3b311a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 745158026}
   attackPoint: {fileID: 993635850}
-  attackRange: 0.74
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackRange: 0.74
+  attackDamage: 40
 --- !u!50 &745158030
 Rigidbody2D:
   serializedVersion: 4
@@ -472,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993635849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.04, z: 0}
+  m_LocalPosition: {x: 0, y: -0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 745158032}
